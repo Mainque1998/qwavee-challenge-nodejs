@@ -2,7 +2,7 @@
 
 Tu tarea consiste en desarrollar una aplicación de gestión de productos utilizando Node.js. La aplicación permitirá a los usuarios realizar las siguientes operaciones: agregar un nuevo producto, ver la lista de productos existentes, actualizar la información de un producto y eliminar un producto.
 
-## Item 1: Configuración del proyecto y endpoints
+## Item 1: Configuración del proyecto y endpoints DONE
 
 1. Configura un nuevo proyecto de Node.js utilizando el marco proporcionado(nestjs) que tiene instalada la dependencia de typeorm.
 2. Crea los siguientes endpoints:
@@ -12,7 +12,7 @@ Tu tarea consiste en desarrollar una aplicación de gestión de productos utiliz
    - `PUT /productos/:id`: Actualiza la información de un producto existente.
    - `DELETE /productos/:id`: Elimina un producto de la base de datos.
 
-## Item 2: Base de datos
+## Item 2: Base de datos DONE
 
 1. Diseña el esquema de la base de datos para almacenar la información de los productos. Los campos mínimos requeridos son:
 
@@ -23,7 +23,7 @@ Tu tarea consiste en desarrollar una aplicación de gestión de productos utiliz
 
 2. Utiliza el sistema de gestión de bases de datos relacional de tu elección (por ejemplo, MySQL, PostgreSQL) para crear la base de datos y la tabla correspondiente al esquema diseñado.
 
-## Item 3: Implementación de los endpoints
+## Item 3: Implementación de los endpoints IN
 
 Implementa la lógica necesaria en cada uno de los endpoints para realizar las operaciones mencionadas anteriormente (agregar, ver, actualizar y eliminar productos). Asegúrate de manejar los posibles errores y devolver las respuestas apropiadas en cada caso (por ejemplo, 404 si un producto no existe).
 
