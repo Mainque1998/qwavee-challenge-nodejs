@@ -1,3 +1,4 @@
 node_modules/   # Ignora el directorio node_modules y su contenido
 .env            # Ignora el archivo .env (archivos de configuración con información sensible)
 logs/           # Ignora el directorio logs y su contenido
+node_modules
