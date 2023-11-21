@@ -1,27 +1,29 @@
 import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Producto } from './Entity/Producto';
 
 @Controller('productos')
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private appService: AppService) {}
+  
 
   @Get()
   findAll() {
-    return [0,0,0];
+    return this.appService.getAllProductos()
   }
 
   @Post()
-  create(@Body() body: any) {
-    return body;
+  create(@Body() p: Producto) {
+    return this.appService.createProducto(p);
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() body: any) {
-    return body;
+  update(@Param('id') id: number, @Body() p: Producto) {
+    return this.appService.updateProducto(id, p);
   }
 
   @Delete(':id')
   delete(@Param('id') id: number) {
-    return true;
+    return this.appService.deleteProducto(id);
   }
 }

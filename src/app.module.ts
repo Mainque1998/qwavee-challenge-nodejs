@@ -17,8 +17,9 @@ import { Producto } from './Entity/Producto';
       logging: true,
       synchronize: true
     }),
-
+    TypeOrmModule.forFeature([Producto])
   ],
+  exports: [TypeOrmModule],
   controllers: [AppController],
   providers: [AppService],
 })

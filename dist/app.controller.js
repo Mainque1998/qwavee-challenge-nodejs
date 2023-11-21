@@ -15,21 +15,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
+const Producto_1 = require("./Entity/Producto");
 let AppController = exports.AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
     }
     findAll() {
-        return [0, 0, 0];
+        return this.appService.getAllProductos();
     }
-    create(body) {
-        return body;
+    create(p) {
+        return this.appService.createProducto(p);
     }
-    update(id, body) {
-        return body;
+    update(id, p) {
+        return this.appService.updateProducto(id, p);
     }
     delete(id) {
-        return true;
+        return this.appService.deleteProducto(id);
     }
 };
 __decorate([
@@ -42,7 +43,7 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Producto_1.Producto]),
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "create", null);
 __decorate([
@@ -50,7 +51,7 @@ __decorate([
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:paramtypes", [Number, Producto_1.Producto]),
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "update", null);
 __decorate([

@@ -28,7 +28,9 @@ exports.AppModule = AppModule = __decorate([
                 logging: true,
                 synchronize: true
             }),
+            typeorm_1.TypeOrmModule.forFeature([Producto_1.Producto])
         ],
+        exports: [typeorm_1.TypeOrmModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

@@ -1,9 +1,10 @@
 import { AppService } from './app.service';
+import { Producto } from './Entity/Producto';
 export declare class AppController {
-    private readonly appService;
+    private appService;
     constructor(appService: AppService);
-    findAll(): number[];
-    create(body: any): any;
-    update(id: number, body: any): any;
-    delete(id: number): boolean;
+    findAll(): Promise<Producto[]>;
+    create(p: Producto): Promise<Producto>;
+    update(id: number, p: Producto): Promise<Producto>;
+    delete(id: number): Promise<boolean>;
 }
