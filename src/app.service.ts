@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Like, MoreThan, LessThan, Repository } from 'typeorm';
 import { Producto } from './Entity/Producto';
@@ -19,20 +19,26 @@ export class AppService {
 
   getAllFirstNProductos(n: number)
   {
-    return this.productosRepository.find({take: n});
+    return this.productosRepository.find({order: { nombre: "ASC" }, take: n});
   }
 
-  getAllProductosConPrecioMenorA(n: number)
+  async getAllLastNProductos(n: number)
+  {
+    const last = await this.productosRepository.count() - n;
+    return this.productosRepository.find({order: { nombre: "ASC" }, skip: last});
+  }
+
+  getAllProductosWithMinPrecio(n: number)
   {
     return this.productosRepository.findBy({precio: LessThan(n)});
   }
 
-  getAllProductosConPrecioMayorA(n: number)
+  getAllProductosWithMaxPrecio(n: number)
   {
     return this.productosRepository.findBy({precio: MoreThan(n)});
   }
 
-  getAllProductosQueContengan(s: string)
+  getAllProductosThatContains(s: string)
   {
     return this.productosRepository.findBy([
       { nombre: Like ("%"+s+"%") },

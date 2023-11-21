@@ -12,24 +12,29 @@ export class AppController {
     return this.appService.getAllProductos()
   }
   
-  @Get('limite/:n')
-  findAllPrimerosN(@Param('n', ParseIntPipe) n: number) {
+  @Get('primeros/:n')
+  findAllFirstN(@Param('n', ParseIntPipe) n: number) {
     return this.appService.getAllFirstNProductos(n)
+  }
+  
+  @Get('ultimos/:n')
+  findAllLastN(@Param('n', ParseIntPipe) n: number) {
+    return this.appService.getAllLastNProductos(n)
   }
 
   @Get('mayor/:n')
-  findAllProductosConPrecioMayor(@Param('n', ParseIntPipe) n: number) {
-    return this.appService.getAllProductosConPrecioMayorA(n)
+  findAllWithMinPrecio(@Param('n', ParseIntPipe) n: number) {
+    return this.appService.getAllProductosWithMinPrecio(n)
   }
 
   @Get('menor/:n')
-  findAllProductosConPrecioMenor(@Param('n', ParseIntPipe) n: number) {
-    return this.appService.getAllProductosConPrecioMenorA(n)
+  findAllWithMaxPrecio(@Param('n', ParseIntPipe) n: number) {
+    return this.appService.getAllProductosWithMaxPrecio(n)
   }
 
   @Get('contiene/:s')
-  findAllProductosQueContengan(@Param('s') s: string) {
-    return this.appService.getAllProductosQueContengan(s)
+  findAllThatContains(@Param('s') s: string) {
+    return this.appService.getAllProductosThatContains(s)
   }
 
   @Post()

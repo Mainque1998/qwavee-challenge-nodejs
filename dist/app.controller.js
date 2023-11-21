@@ -23,17 +23,20 @@ let AppController = exports.AppController = class AppController {
     findAll() {
         return this.appService.getAllProductos();
     }
-    findAllPrimerosN(n) {
+    findAllFirstN(n) {
         return this.appService.getAllFirstNProductos(n);
     }
-    findAllProductosConPrecioMayor(n) {
-        return this.appService.getAllProductosConPrecioMayorA(n);
+    findAllLastN(n) {
+        return this.appService.getAllLastNProductos(n);
     }
-    findAllProductosConPrecioMenor(n) {
-        return this.appService.getAllProductosConPrecioMenorA(n);
+    findAllWithMinPrecio(n) {
+        return this.appService.getAllProductosWithMinPrecio(n);
     }
-    findAllProductosQueContengan(s) {
-        return this.appService.getAllProductosQueContengan(s);
+    findAllWithMaxPrecio(n) {
+        return this.appService.getAllProductosWithMaxPrecio(n);
+    }
+    findAllThatContains(s) {
+        return this.appService.getAllProductosThatContains(s);
     }
     create(dto) {
         return this.appService.createProducto(dto);
@@ -52,33 +55,40 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)('limite/:n'),
+    (0, common_1.Get)('primeros/:n'),
     __param(0, (0, common_1.Param)('n', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], AppController.prototype, "findAllPrimerosN", null);
+], AppController.prototype, "findAllFirstN", null);
+__decorate([
+    (0, common_1.Get)('ultimos/:n'),
+    __param(0, (0, common_1.Param)('n', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "findAllLastN", null);
 __decorate([
     (0, common_1.Get)('mayor/:n'),
     __param(0, (0, common_1.Param)('n', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], AppController.prototype, "findAllProductosConPrecioMayor", null);
+], AppController.prototype, "findAllWithMinPrecio", null);
 __decorate([
     (0, common_1.Get)('menor/:n'),
     __param(0, (0, common_1.Param)('n', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], AppController.prototype, "findAllProductosConPrecioMenor", null);
+], AppController.prototype, "findAllWithMaxPrecio", null);
 __decorate([
     (0, common_1.Get)('contiene/:s'),
     __param(0, (0, common_1.Param)('s')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], AppController.prototype, "findAllProductosQueContengan", null);
+], AppController.prototype, "findAllThatContains", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),

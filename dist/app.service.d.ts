@@ -5,9 +5,10 @@ export declare class AppService {
     constructor(productosRepository: Repository<Producto>);
     getAllProductos(): Promise<Producto[]>;
     getAllFirstNProductos(n: number): Promise<Producto[]>;
-    getAllProductosConPrecioMenorA(n: number): Promise<Producto[]>;
-    getAllProductosConPrecioMayorA(n: number): Promise<Producto[]>;
-    getAllProductosQueContengan(s: string): Promise<Producto[]>;
+    getAllLastNProductos(n: number): Promise<Producto[]>;
+    getAllProductosWithMinPrecio(n: number): Promise<Producto[]>;
+    getAllProductosWithMaxPrecio(n: number): Promise<Producto[]>;
+    getAllProductosThatContains(s: string): Promise<Producto[]>;
     createProducto(p: Producto): Promise<Producto>;
     updateProducto(id: number, p: Producto): Promise<Producto>;
     deleteProducto(id: number): Promise<boolean>;
