@@ -26,8 +26,6 @@ let AppService = exports.AppService = class AppService {
         return this.productosRepository.find();
     }
     async createProducto(p) {
-        if (p.nombre == null || p.precio == null || p.descripcion == null)
-            throw new common_1.HttpException('Para añadir un producto los campos de nombre, precio y descripcion no pueden estar vacíos.', common_1.HttpStatus.BAD_REQUEST);
         const newP = await this.productosRepository.create(p);
         return this.productosRepository.save(newP);
     }
@@ -35,8 +33,6 @@ let AppService = exports.AppService = class AppService {
         const oldP = await this.productosRepository.findOneBy({ id: id });
         if (oldP == null)
             throw new id_not_found_1.IdNotFound(id);
-        if (p.id != null)
-            throw new common_1.HttpException('No se puede actualizar el id de un producto.', common_1.HttpStatus.BAD_REQUEST);
         this.productosRepository.merge(oldP, p);
         return this.productosRepository.save(oldP);
     }

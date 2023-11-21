@@ -1,6 +1,6 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Producto } from './Entity/Producto';
+import { ProductoDTO } from './DTO/Producto.DTO';
 
 @Controller('productos')
 export class AppController {
@@ -13,17 +13,17 @@ export class AppController {
   }
 
   @Post()
-  create(@Body() p: Producto) {
-    return this.appService.createProducto(p);
+  create(@Body() dto: ProductoDTO) {
+    return this.appService.createProducto(dto);
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() p: Producto) {
-    return this.appService.updateProducto(id, p);
+  update(@Param('id', ParseIntPipe) id: number, @Body() dto: ProductoDTO) {
+    return this.appService.updateProducto(id, dto);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: number) {
+  delete(@Param('id', ParseIntPipe) id: number) {
     return this.appService.deleteProducto(id);
   }
 }

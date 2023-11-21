@@ -11,6 +11,6 @@ export class Producto {
   @Column()
   precio: number;
 
-  @Column({ default: true })
+  @Column()
   descripcion: string;
 }

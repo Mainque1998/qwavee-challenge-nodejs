@@ -9,27 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Producto = void 0;
-const typeorm_1 = require("typeorm");
-let Producto = exports.Producto = class Producto {
-};
+exports.ProductoDTO = void 0;
+const class_validator_1 = require("class-validator");
+class ProductoDTO {
+}
+exports.ProductoDTO = ProductoDTO;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, class_validator_1.IsInt)(),
     __metadata("design:type", Number)
-], Producto.prototype, "id", void 0);
+], ProductoDTO.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], Producto.prototype, "nombre", void 0);
+], ProductoDTO.prototype, "nombre", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(0),
     __metadata("design:type", Number)
-], Producto.prototype, "precio", void 0);
+], ProductoDTO.prototype, "precio", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], Producto.prototype, "descripcion", void 0);
-exports.Producto = Producto = __decorate([
-    (0, typeorm_1.Entity)()
-], Producto);
-//# sourceMappingURL=Producto.js.map
+], ProductoDTO.prototype, "descripcion", void 0);
+//# sourceMappingURL=Producto.DTO.js.map

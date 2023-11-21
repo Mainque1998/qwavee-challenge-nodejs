@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
-const Producto_1 = require("./Entity/Producto");
+const Producto_DTO_1 = require("./DTO/Producto.DTO");
 let AppController = exports.AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
@@ -23,11 +23,11 @@ let AppController = exports.AppController = class AppController {
     findAll() {
         return this.appService.getAllProductos();
     }
-    create(p) {
-        return this.appService.createProducto(p);
+    create(dto) {
+        return this.appService.createProducto(dto);
     }
-    update(id, p) {
-        return this.appService.updateProducto(id, p);
+    update(id, dto) {
+        return this.appService.updateProducto(id, dto);
     }
     delete(id) {
         return this.appService.deleteProducto(id);
@@ -43,20 +43,20 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Producto_1.Producto]),
+    __metadata("design:paramtypes", [Producto_DTO_1.ProductoDTO]),
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Producto_1.Producto]),
+    __metadata("design:paramtypes", [Number, Producto_DTO_1.ProductoDTO]),
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
