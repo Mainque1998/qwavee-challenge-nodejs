@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const Producto_1 = require("./Entity/Producto");
+const id_not_found_1 = require("./Customs exceptions/id.not.found");
 let AppService = exports.AppService = class AppService {
     constructor(productosRepository) {
         this.productosRepository = productosRepository;
@@ -25,15 +26,23 @@ let AppService = exports.AppService = class AppService {
         return this.productosRepository.find();
     }
     async createProducto(p) {
+        if (p.nombre == null || p.precio == null || p.descripcion == null)
+            throw new common_1.HttpException('Para añadir un producto los campos de nombre, precio y descripcion no pueden estar vacíos.', common_1.HttpStatus.BAD_REQUEST);
         const newP = await this.productosRepository.create(p);
         return this.productosRepository.save(newP);
     }
     async updateProducto(id, p) {
         const oldP = await this.productosRepository.findOneBy({ id: id });
+        if (oldP == null)
+            throw new id_not_found_1.IdNotFound(id);
+        if (p.id != null)
+            throw new common_1.HttpException('No se puede actualizar el id de un producto.', common_1.HttpStatus.BAD_REQUEST);
         this.productosRepository.merge(oldP, p);
         return this.productosRepository.save(oldP);
     }
     async deleteProducto(id) {
+        if (await this.productosRepository.findOneBy({ id: id }) == null)
+            throw new id_not_found_1.IdNotFound(id);
         await this.productosRepository.delete(id);
         return true;
     }
