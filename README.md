@@ -27,7 +27,7 @@ Tu tarea consiste en desarrollar una aplicación de gestión de productos utiliz
 
 Implementa la lógica necesaria en cada uno de los endpoints para realizar las operaciones mencionadas anteriormente (agregar, ver, actualizar y eliminar productos). Asegúrate de manejar los posibles errores y devolver las respuestas apropiadas en cada caso (por ejemplo, 404 si un producto no existe).
 
-## Item 4 (opcional): Validaciones y mejoras adicionales IN
+## Item 4 (opcional): Validaciones y mejoras adicionales DONE
 
 1. Agrega validaciones para los datos ingresados al crear o actualizar un producto (por ejemplo, asegurarse de que el precio sea un número positivo).
 2. Implementa paginación o filtrado para la lista de productos en el endpoint `GET /productos`, de manera que se puedan obtener subconjuntos de productos según criterios especificados en la solicitud (por ejemplo, limitar la cantidad de productos devueltos).

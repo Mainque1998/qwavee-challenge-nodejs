@@ -23,6 +23,18 @@ let AppController = exports.AppController = class AppController {
     findAll() {
         return this.appService.getAllProductos();
     }
+    findAllPrimerosN(n) {
+        return this.appService.getAllFirstNProductos(n);
+    }
+    findAllProductosConPrecioMayor(n) {
+        return this.appService.getAllProductosConPrecioMayorA(n);
+    }
+    findAllProductosConPrecioMenor(n) {
+        return this.appService.getAllProductosConPrecioMenorA(n);
+    }
+    findAllProductosQueContengan(s) {
+        return this.appService.getAllProductosQueContengan(s);
+    }
     create(dto) {
         return this.appService.createProducto(dto);
     }
@@ -39,6 +51,34 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('limite/:n'),
+    __param(0, (0, common_1.Param)('n', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "findAllPrimerosN", null);
+__decorate([
+    (0, common_1.Get)('mayor/:n'),
+    __param(0, (0, common_1.Param)('n', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "findAllProductosConPrecioMayor", null);
+__decorate([
+    (0, common_1.Get)('menor/:n'),
+    __param(0, (0, common_1.Param)('n', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "findAllProductosConPrecioMenor", null);
+__decorate([
+    (0, common_1.Get)('contiene/:s'),
+    __param(0, (0, common_1.Param)('s')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "findAllProductosQueContengan", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),

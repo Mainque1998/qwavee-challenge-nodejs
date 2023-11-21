@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, MoreThan, LessThan, Repository } from 'typeorm';
 import { Producto } from './Entity/Producto';
 import { IdNotFound } from './Customs exceptions/id.not.found';
 
@@ -15,6 +15,29 @@ export class AppService {
   getAllProductos()
   {
     return this.productosRepository.find();
+  }
+
+  getAllFirstNProductos(n: number)
+  {
+    return this.productosRepository.find({take: n});
+  }
+
+  getAllProductosConPrecioMenorA(n: number)
+  {
+    return this.productosRepository.findBy({precio: LessThan(n)});
+  }
+
+  getAllProductosConPrecioMayorA(n: number)
+  {
+    return this.productosRepository.findBy({precio: MoreThan(n)});
+  }
+
+  getAllProductosQueContengan(s: string)
+  {
+    return this.productosRepository.findBy([
+      { nombre: Like ("%"+s+"%") },
+      { descripcion: Like ("%"+s+"%") }
+    ]);
   }
 
   async createProducto(p: Producto)

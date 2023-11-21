@@ -11,6 +11,26 @@ export class AppController {
   findAll() {
     return this.appService.getAllProductos()
   }
+  
+  @Get('limite/:n')
+  findAllPrimerosN(@Param('n', ParseIntPipe) n: number) {
+    return this.appService.getAllFirstNProductos(n)
+  }
+
+  @Get('mayor/:n')
+  findAllProductosConPrecioMayor(@Param('n', ParseIntPipe) n: number) {
+    return this.appService.getAllProductosConPrecioMayorA(n)
+  }
+
+  @Get('menor/:n')
+  findAllProductosConPrecioMenor(@Param('n', ParseIntPipe) n: number) {
+    return this.appService.getAllProductosConPrecioMenorA(n)
+  }
+
+  @Get('contiene/:s')
+  findAllProductosQueContengan(@Param('s') s: string) {
+    return this.appService.getAllProductosQueContengan(s)
+  }
 
   @Post()
   create(@Body() dto: ProductoDTO) {

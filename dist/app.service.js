@@ -25,6 +25,21 @@ let AppService = exports.AppService = class AppService {
     getAllProductos() {
         return this.productosRepository.find();
     }
+    getAllFirstNProductos(n) {
+        return this.productosRepository.find({ take: n });
+    }
+    getAllProductosConPrecioMenorA(n) {
+        return this.productosRepository.findBy({ precio: (0, typeorm_2.LessThan)(n) });
+    }
+    getAllProductosConPrecioMayorA(n) {
+        return this.productosRepository.findBy({ precio: (0, typeorm_2.MoreThan)(n) });
+    }
+    getAllProductosQueContengan(s) {
+        return this.productosRepository.findBy([
+            { nombre: (0, typeorm_2.Like)("%" + s + "%") },
+            { descripcion: (0, typeorm_2.Like)("%" + s + "%") }
+        ]);
+    }
     async createProducto(p) {
         const newP = await this.productosRepository.create(p);
         return this.productosRepository.save(newP);
